@@ -1,7 +1,8 @@
 nginx Cookbook
 ==============
 [![Cookbook](http://img.shields.io/cookbook/v/nginx.svg)](https://github.com/miketheman/nginx)
-[![Build Status](https://travis-ci.org/miketheman/nginx.svg?branch=master)](https://travis-ci.org/miketheman/nginx)
+[![Travis Build Status](https://travis-ci.org/miketheman/nginx.svg?branch=3.0.0-rewrite)](https://travis-ci.org/miketheman/nginx)
+[![Circle CI Build Status](https://circleci.com/gh/miketheman/nginx/tree/3.0.0-rewrite.svg?style=svg)](https://circleci.com/gh/miketheman/nginx/tree/3.0.0-rewrite)
 [![Gitter chat](https://img.shields.io/badge/Gitter-miketheman%2Fnginx-brightgreen.svg)](https://gitter.im/miketheman/nginx)
 
 **Note**: This branch is currently a Work-In-Progress, in hopes of rewriting the nginx cookbook
