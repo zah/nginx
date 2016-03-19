@@ -7,8 +7,7 @@ user <%= @run_user %><%= " #{@run_group}" unless @run_group.nil? %>;
 worker_processes <%= @worker_processes.nil? ? 'auto' : @worker_processes %>;
 
 error_log /var/log/<%= @nginx_instance_name %>/error.log <%= @error_log_level %>;
-pid /var/run/<%= @nginx_instance_name %>.pid;
-
+pid /run/<%= @nginx_instance_name %>.pid;
 
 events {
   worker_connections <%= @worker_connections %>;

@@ -17,7 +17,7 @@ DESC=nginx
 NAME=<%= @nginx_instance_name %>
 CONFFILE=/etc/$NAME/nginx.conf
 DAEMON=/usr/sbin/nginx
-PIDFILE=/var/run/$NAME.pid
+PIDFILE=/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 SLEEPSEC=1
 UPGRADEWAITLOOPS=5
