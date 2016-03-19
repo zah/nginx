@@ -47,6 +47,35 @@ RSpec.configure do
     end
   end
 
+  shared_examples_for 'delete a named nginx_service' do |servicename|
+    it "deletes nginx_service[#{servicename}]" do
+      expect(chef_run).to delete_nginx_service(servicename)
+    end
+  end
+
+  shared_examples_for 'nginx_service :stop' do |servicename|
+    it 'stops and disables the service' do
+      expect(chef_run).to stop_service("nginx-#{servicename}")
+      expect(chef_run).to disable_service("nginx-#{servicename}")
+    end
+  end
+
+  shared_examples_for 'nginx_service :delete #sysvinit' do |servicename|
+    it_behaves_like 'nginx_service :stop', servicename
+
+    it 'deletes instance-specific files' do
+      expect(chef_run).to delete_file("/etc/init.d/nginx-#{servicename}")
+    end
+  end
+
+  shared_examples_for 'nginx_service :delete #upstart' do |servicename|
+    it_behaves_like 'nginx_service :stop', servicename
+
+    it 'deletes instance-specific files' do
+      expect(chef_run).to delete_file("/etc/init/nginx-#{servicename}.conf")
+    end
+  end
+
   shared_examples_for 'nginx_service #sysvinit' do |servicename|
     it 'templates instance-specific files' do
       expect(chef_run).to create_template("/etc/init.d/nginx-#{servicename}")

@@ -41,18 +41,17 @@ class Chef
         end
 
         action :delete do
-          # @todo create recipes and tests for this
-          file "#{res_name} :delete /etc/init.d/#{nginx_instance_name}" do
-            path "/etc/init.d/#{nginx_instance_name}"
-            action :delete
-          end
-
           service "#{res_name} :delete #{nginx_instance_name}" do
             service_name nginx_instance_name
             provider Chef::Provider::Service::Init::Insserv if node['platform_family'] == 'debian'
             provider Chef::Provider::Service::Init::Redhat  if node['platform_family'] == 'redhat'
             supports status: true
             action [:stop, :disable]
+          end
+
+          file "#{res_name} :delete /etc/init.d/#{nginx_instance_name}" do
+            path "/etc/init.d/#{nginx_instance_name}"
+            action :delete
           end
         end
 

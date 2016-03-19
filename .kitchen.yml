@@ -22,6 +22,11 @@ suites:
     run_list:
       - recipe[nginx_service_test::single]
 
+  - name: service_single_delete
+    run_list:
+      - recipe[nginx_service_test::single]
+      # - recipe[nginx_service_test::delete]
+
   - name: service_multi
     run_list:
       - recipe[nginx_service_test::multi]

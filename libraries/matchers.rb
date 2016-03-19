@@ -22,4 +22,12 @@ if defined?(ChefSpec)
   def restart_nginx_service(resource_name)
     ChefSpec::Matchers::ResourceMatcher.new(:nginx_service, :restart, resource_name)
   end
+
+  def start_nginx_service(resource_name)
+    ChefSpec::Matchers::ResourceMatcher.new(:nginx_service, :start, resource_name)
+  end
+
+  def stop_nginx_service(resource_name)
+    ChefSpec::Matchers::ResourceMatcher.new(:nginx_service, :stop, resource_name)
+  end
 end

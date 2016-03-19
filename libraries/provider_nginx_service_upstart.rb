@@ -42,17 +42,16 @@ class Chef
         end
 
         action :delete do
-          # @todo create recipes and tests for this
-          file "#{res_name} :delete /etc/init/#{nginx_instance_name}.conf" do
-            path "/etc/init/#{nginx_instance_name}.conf"
-            action :delete
-          end
-
           service "#{res_name} :delete #{nginx_instance_name}" do
             service_name nginx_instance_name
             provider Chef::Provider::Service::Upstart
             supports status: true
             action [:stop, :disable]
+          end
+
+          file "#{res_name} :delete /etc/init/#{nginx_instance_name}.conf" do
+            path "/etc/init/#{nginx_instance_name}.conf"
+            action :delete
           end
         end
 

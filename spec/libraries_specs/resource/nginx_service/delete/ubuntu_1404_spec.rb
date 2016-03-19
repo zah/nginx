@@ -1,4 +1,4 @@
-describe 'resource_nginx_service :delete on debian 7' do
+describe 'resource_nginx_service :delete on ubuntu 14.04' do
   before do
     allow(Chef::Platform::ServiceHelpers).to receive(:service_resource_providers).and_return([:upstart])
   end
@@ -6,8 +6,8 @@ describe 'resource_nginx_service :delete on debian 7' do
   cached(:chef_run) do
     ChefSpec::SoloRunner.new(
       step_into: 'nginx_service',
-      platform: 'debian',
-      version: '7.0'
+      platform: 'ubuntu',
+      version: '14.04'
     ).converge('nginx_service_test::delete')
   end
 
