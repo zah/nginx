@@ -19,6 +19,7 @@
 # limitations under the License.
 #
 
+if false
 ohai 'reload_nginx' do
   plugin 'nginx'
   action :nothing
@@ -33,3 +34,5 @@ template "#{node['ohai']['plugin_path']}/nginx.rb" do
 end
 
 include_recipe 'ohai::default'
+end
+
